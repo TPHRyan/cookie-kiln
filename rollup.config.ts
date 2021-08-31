@@ -1,8 +1,10 @@
-import typescript from "@rollup/plugin-typescript";
+import jsonPlugin from "@rollup/plugin-json";
+import typescriptPlugin from "@rollup/plugin-typescript";
 import { RollupOptions } from "rollup";
 import metablock from "rollup-plugin-userscript-metablock";
 
-import pkg from "./package.json";
+import { version as pkgVersion } from "./package.json";
+import babel from "@rollup/plugin-babel";
 
 export default {
 	input: "src/main.ts",
@@ -11,11 +13,17 @@ export default {
 		format: "iife",
 	},
 	plugins: [
-		typescript(),
+		jsonPlugin({
+			preferConst: true,
+		}),
+		typescriptPlugin(),
+		babel({
+			babelHelpers: "bundled",
+		}),
 		metablock({
 			manager: "tampermonkey",
 			override: {
-				version: pkg.version,
+				version: pkgVersion,
 			},
 		}),
 	],

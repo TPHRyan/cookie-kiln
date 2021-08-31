@@ -1,11 +1,11 @@
-import pkg from "../package.json";
+import { version as pkgVersion } from "../package.json";
 
 interface CookieKilnMod extends CookieClickerMod {}
 
 function createMod(Game: Game): CookieKilnMod {
 	return {
 		init() {
-			console.log(`Loaded Cookie Kiln v${pkg.version}.`);
+			console.log(`Loaded Cookie Kiln v${pkgVersion}.`);
 			console.log(`Running on Cookie Clicker v${Game.version}.`);
 		},
 		save(): string {
