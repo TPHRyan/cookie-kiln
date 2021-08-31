@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+	"module": "ESNext",
+	"moduleResolution": "Node",
+	"esModuleInterop": true,
+	"target": "ES2021",
+	"resolveJsonModule": true,
+	"baseUrl": "src",
+	"rootDir": ".",
+	"outDir": "dist",
+	"noEmit": true,
+	"sourceMap": false,
+	"strict": true,
+	"types": ["cookie-clicker", "tampermonkey"],
+	"typeRoots": ["./node_modules/@types", "./@types"]
+  },
+  "files": ["src/main.ts", "./rollup.config.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}
