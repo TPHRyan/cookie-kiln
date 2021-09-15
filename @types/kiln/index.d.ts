@@ -10,20 +10,41 @@ declare namespace CookieKiln {
 
 	interface BaseModContext extends Record<string, unknown> {}
 
-	type InitHandler<Context extends BaseModContext = BaseModContext> = (
+	type InitHook = "init";
+	type VoidHook =
+		| "check"
+		| "click"
+		| "create"
+		| "draw"
+		| "logic"
+		| "reincarnate";
+	type Hook = VoidHook;
+
+	type BoundHandler = (game: Game) => void;
+
+	type InitHandler<Context extends BaseModContext> = (
 		this: KilnMethods & Partial<Context>,
 		game: Game,
 	) => void;
 
+	type VoidHandler<Context extends BaseModContext> = (
+		this: KilnMethods & Context,
+		game: Game,
+	) => void;
+
 	interface HookFunction<Context extends BaseModContext = BaseModContext> {
-		(hook: "init", handler: InitHandler<Context>): SetupContext<Context>;
+		(hook: InitHook, handler: InitHandler<Context>): SetupContext<Context>;
+		(hook: VoidHook, handler: VoidHandler<Context>): SetupContext<Context>;
 	}
 
 	type _HooksLookup<Context extends BaseModContext = BaseModContext> = {
-		[key: string]: Function;
-		init: InitHandler<Context>;
+		check: VoidHandler<Context>;
+		click: VoidHandler<Context>;
+		create: VoidHandler<Context>;
+		draw: VoidHandler<Context>;
+		logic: VoidHandler<Context>;
+		reincarnate: VoidHandler<Context>;
 	};
-	type Hook = Parameters<HookFunction>[0];
 	type HandlerFor<
 		K extends Hook,
 		Context extends BaseModContext = BaseModContext,
@@ -37,10 +58,15 @@ declare namespace CookieKiln {
 		(ctx: SetupContext<Context>): SetupContext<Context> | void;
 	}
 
-	interface RuntimeHooks<Context extends BaseModContext = BaseModContext> {
-		[key: string]: Function[] | undefined;
-		init?: _HooksLookup<Context>["init"][];
-	}
+	type RuntimeHooks<Context extends BaseModContext = BaseModContext> = {
+		[K in Hook]?: BoundHandler[];
+	};
+
+	type SetupHooks<Context extends BaseModContext = BaseModContext> = {
+		[K in Hook | InitHook]?: K extends InitHook
+			? InitHandler<Context>[]
+			: VoidHandler<Context>[];
+	};
 }
 
 interface Game {

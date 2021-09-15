@@ -49,18 +49,20 @@ function loadTestMod(): void {
 }
 
 unsafeWindow.onCookieKilnLoad = new Promise<Game>((resolve, reject) => {
-	const loadModInterval = setInterval(() => {
+	const loadCookieKiln = () => {
 		const Game = unsafeWindow.Game;
 		if (Game?.ready) {
 			try {
 				Game.registerMod("CookieKiln", createMod(Game));
-				clearInterval(loadModInterval);
 				resolve(Game);
 			} catch (e) {
 				reject(e);
 			}
+		} else {
+			setTimeout(loadCookieKiln, 1);
 		}
-	}, 10);
+	};
+	loadCookieKiln();
 });
 
 loadTestMod();
