@@ -11,7 +11,6 @@
 	"noEmit": true,
 	"sourceMap": false,
 	"strict": true,
-	"types": ["cookie-clicker", "tampermonkey"],
 	"typeRoots": ["./node_modules/@types", "./@types"]
   },
   "files": ["src/main.ts", "./rollup.config.ts"],

@@ -21,5 +21,8 @@
   "browserslist": [
     "> 1%",
     "not dead"
-  ]
+  ],
+  "engines": {
+    "cookie-clicker": "<=2.031"
+  }
 }

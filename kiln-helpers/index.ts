@@ -1,0 +1,1 @@
+export { defineMod } from "./mod";
