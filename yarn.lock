@@ -1286,6 +1286,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/pluginutils@npm:^4.1.0":
+  version: 4.1.1
+  resolution: "@rollup/pluginutils@npm:4.1.1"
+  dependencies:
+    estree-walker: ^2.0.1
+    picomatch: ^2.2.2
+  checksum: 405f681c7d32661980aa3caa928ff22e1c06f0e081db1550e6ab9c179dc9d3d8d63c05dcc7338fe65ab3f856a56c465696a51300b83e98171956fcb141106e39
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -1686,6 +1696,7 @@ __metadata:
     "@types/node": ^14.17.12
     prettier: ^2.3.2
     rollup: ^2.56.3
+    rollup-plugin-import-css: ^3.0.0
     rollup-plugin-userscript-metablock: ^0.3.1
     ts-node: ^10.2.1
     tslib: ^2.3.1
@@ -1807,6 +1818,13 @@ __metadata:
   version: 1.0.1
   resolution: "estree-walker@npm:1.0.1"
   checksum: 7e70da539691f6db03a08e7ce94f394ce2eef4180e136d251af299d41f92fb2d28ebcd9a6e393e3728d7970aeb5358705ddf7209d52fbcb2dd4693f95dcf925f
+  languageName: node
+  linkType: hard
+
+"estree-walker@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "estree-walker@npm:2.0.2"
+  checksum: 6151e6f9828abe2259e57f5fd3761335bb0d2ebd76dc1a01048ccee22fabcfef3c0859300f6d83ff0d1927849368775ec5a6d265dde2f6de5a1be1721cd94efc
   languageName: node
   linkType: hard
 
@@ -2574,6 +2592,17 @@ fsevents@~2.3.2:
   bin:
     rimraf: bin.js
   checksum: 87f4164e396f0171b0a3386cc1877a817f572148ee13a7e113b238e48e8a9f2f31d009a92ec38a591ff1567d9662c6b67fd8818a2dbbaed74bc26a87a2a4a9a0
+  languageName: node
+  linkType: hard
+
+"rollup-plugin-import-css@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "rollup-plugin-import-css@npm:3.0.0"
+  dependencies:
+    "@rollup/pluginutils": ^4.1.0
+  peerDependencies:
+    rollup: ^2.x.x
+  checksum: 167c97c4d268d075d36aa3869ef4faa51eff84f397214b467cdee928e982e225495dae9b41855eee51a877bd7acb2c97e10ea4dce58e3261c73f0d48fedeb49d
   languageName: node
   linkType: hard
 

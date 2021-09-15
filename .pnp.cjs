@@ -43,6 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.17.12"],
             ["prettier", "npm:2.3.2"],
             ["rollup", "npm:2.56.3"],
+            ["rollup-plugin-import-css", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:3.0.0"],
             ["rollup-plugin-userscript-metablock", "npm:0.3.1"],
             ["ts-node", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:10.2.1"],
             ["tslib", "npm:2.3.1"],
@@ -2222,6 +2223,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["npm:4.1.1", {
+          "packageLocation": "./.yarn/cache/@rollup-pluginutils-npm-4.1.1-7b6d7ea8b8-405f681c7d.zip/node_modules/@rollup/pluginutils/",
+          "packageDependencies": [
+            ["@rollup/pluginutils", "npm:4.1.1"],
+            ["estree-walker", "npm:2.0.2"],
+            ["picomatch", "npm:2.3.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:3a30a0a03a3ef75c05bbcb58755cf066e3f988c7c007d2ebb8e271078733d6244bf94ccd39e29ed1f2a6a149087b8689664b33ee49262daadc3a16c2c68d32cd#npm:3.1.0", {
           "packageLocation": "./.yarn/__virtual__/@rollup-pluginutils-virtual-bc7c6137dc/0/cache/@rollup-pluginutils-npm-3.1.0-b44b222e7d-8be16e2786.zip/node_modules/@rollup/pluginutils/",
           "packageDependencies": [
@@ -2728,6 +2738,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.17.12"],
             ["prettier", "npm:2.3.2"],
             ["rollup", "npm:2.56.3"],
+            ["rollup-plugin-import-css", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:3.0.0"],
             ["rollup-plugin-userscript-metablock", "npm:0.3.1"],
             ["ts-node", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:10.2.1"],
             ["tslib", "npm:2.3.1"],
@@ -2883,6 +2894,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/estree-walker-npm-1.0.1-e916593b23-7e70da5396.zip/node_modules/estree-walker/",
           "packageDependencies": [
             ["estree-walker", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.0.2", {
+          "packageLocation": "./.yarn/cache/estree-walker-npm-2.0.2-dfab42f65c-6151e6f982.zip/node_modules/estree-walker/",
+          "packageDependencies": [
+            ["estree-walker", "npm:2.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -3747,6 +3765,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["rollup", "npm:2.56.3"],
             ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=1cc4b2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["rollup-plugin-import-css", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/rollup-plugin-import-css-npm-3.0.0-429fce01b8-167c97c4d2.zip/node_modules/rollup-plugin-import-css/",
+          "packageDependencies": [
+            ["rollup-plugin-import-css", "npm:3.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:3.0.0", {
+          "packageLocation": "./.yarn/__virtual__/rollup-plugin-import-css-virtual-d8906542dd/0/cache/rollup-plugin-import-css-npm-3.0.0-429fce01b8-167c97c4d2.zip/node_modules/rollup-plugin-import-css/",
+          "packageDependencies": [
+            ["rollup-plugin-import-css", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:3.0.0"],
+            ["@rollup/pluginutils", "npm:4.1.1"],
+            ["@types/rollup", null],
+            ["rollup", "npm:2.56.3"]
+          ],
+          "packagePeers": [
+            "@types/rollup",
+            "rollup"
           ],
           "linkType": "HARD",
         }]

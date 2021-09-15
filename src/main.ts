@@ -1,7 +1,8 @@
 import { engines as pkgEngines, version as pkgVersion } from "../package.json";
-import { installKiln } from "./kiln";
-import { defineMod } from "../kiln-helpers";
 import { loadMod } from "../kiln-helpers/mod";
+
+import { installKiln } from "./kiln";
+import testMod from "./test-mod";
 
 function cookieClickerVersionIsValid(
 	actualVersion: number,
@@ -40,14 +41,7 @@ function createMod(Game: Game): CookieClickerMod {
 }
 
 function loadTestMod(): void {
-	loadMod(
-		"KilnTestMod",
-		defineMod((ctx) =>
-			ctx.hook("init", () => {
-				console.log("Hello, world!");
-			}),
-		),
-	)
+	loadMod("KilnTestMod", testMod)
 		.then()
 		.catch((reason) => {
 			throw reason;

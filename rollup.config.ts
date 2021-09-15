@@ -1,18 +1,21 @@
+import babel from "@rollup/plugin-babel";
 import jsonPlugin from "@rollup/plugin-json";
 import typescriptPlugin from "@rollup/plugin-typescript";
 import { RollupOptions } from "rollup";
-import metablock from "rollup-plugin-userscript-metablock";
+import cssPlugin from "rollup-plugin-import-css";
+import metablockPlugin from "rollup-plugin-userscript-metablock";
 
 import { version as pkgVersion } from "./package.json";
-import babel from "@rollup/plugin-babel";
 
 export default {
 	input: "src/main.ts",
 	output: {
 		file: "dist/cookie-kiln.userscript.js",
 		format: "iife",
+		preferConst: true,
 	},
 	plugins: [
+		cssPlugin(),
 		jsonPlugin({
 			preferConst: true,
 		}),
@@ -20,7 +23,7 @@ export default {
 		babel({
 			babelHelpers: "bundled",
 		}),
-		metablock({
+		metablockPlugin({
 			manager: "tampermonkey",
 			override: {
 				version: pkgVersion,

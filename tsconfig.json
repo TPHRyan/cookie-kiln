@@ -13,7 +13,7 @@
 	"strict": true,
 	"typeRoots": ["./node_modules/@types", "./@types"]
   },
-  "files": ["src/main.ts", "./rollup.config.ts"],
+  "files": ["src/main.ts", "src/global.d.ts", "./rollup.config.ts"],
   "exclude": [
     "node_modules"
   ]

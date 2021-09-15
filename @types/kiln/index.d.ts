@@ -3,10 +3,15 @@ declare interface Window {
 }
 
 declare namespace CookieKiln {
+	interface KilnMethods {
+		addOverlayElement(element: HTMLElement): void;
+		addStyles(css: string): void;
+	}
+
 	interface BaseModContext extends Record<string, unknown> {}
 
 	type InitHandler<Context extends BaseModContext = BaseModContext> = (
-		this: Partial<Context>,
+		this: KilnMethods & Partial<Context>,
 		game: Game,
 	) => void;
 
@@ -39,7 +44,11 @@ declare namespace CookieKiln {
 }
 
 interface Game {
-	kilnHooks: CookieKiln.RuntimeHooks;
+	kilnData: {
+		[key: string]: unknown;
+		elements: Record<string, HTMLElement>;
+		hooks: CookieKiln.RuntimeHooks;
+	};
 
 	registerKilnMod<
 		Context extends CookieKiln.BaseModContext = CookieKiln.BaseModContext,
