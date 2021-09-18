@@ -9,46 +9,106 @@ declare namespace CookieKiln {
 	}
 
 	interface BaseModContext extends Record<string, unknown> {}
-
-	type InitHook = "init";
-	type VoidHook =
-		| "check"
-		| "click"
-		| "create"
-		| "draw"
-		| "logic"
-		| "reincarnate";
-	type Hook = VoidHook;
-
-	type BoundHandler = (game: Game) => void;
-
-	type InitHandler<Context extends BaseModContext> = (
-		this: KilnMethods & Partial<Context>,
-		game: Game,
-	) => void;
+	type WithKilnMethods<Context extends BaseModContext> = KilnMethods &
+		Context;
 
 	type VoidHandler<Context extends BaseModContext> = (
-		this: KilnMethods & Context,
+		this: WithKilnMethods<Context>,
 		game: Game,
 	) => void;
 
-	interface HookFunction<Context extends BaseModContext = BaseModContext> {
-		(hook: InitHook, handler: InitHandler<Context>): SetupContext<Context>;
-		(hook: VoidHook, handler: VoidHandler<Context>): SetupContext<Context>;
-	}
-
-	type _HooksLookup<Context extends BaseModContext = BaseModContext> = {
+	type _VanillaModHooks<Context extends BaseModContext = BaseModContext> = {
 		check: VoidHandler<Context>;
 		click: VoidHandler<Context>;
+		cookiesPerClick: (
+			this: WithKilnMethods<Context>,
+			cookiesPerClick: number,
+			game: Game,
+		) => number;
+		cps: (
+			this: WithKilnMethods<Context>,
+			cps: number,
+			game: Game,
+		) => number;
 		create: VoidHandler<Context>;
 		draw: VoidHandler<Context>;
 		logic: VoidHandler<Context>;
 		reincarnate: VoidHandler<Context>;
+		reset: (
+			this: WithKilnMethods<Context>,
+			hardReset: boolean,
+			game: Game,
+		) => void;
+		ticker: (this: WithKilnMethods<Context>, game: Game) => string[];
 	};
+
+	type VanillaHook = {
+		[K in keyof _VanillaModHooks]: K extends keyof _VanillaModHooks
+			? K
+			: never;
+	}[keyof _VanillaModHooks];
+
+	type VanillaHandler<Context extends BaseModContext> = {
+		[K in keyof _VanillaModHooks]: K extends keyof _VanillaModHooks
+			? _VanillaModHooks[K]
+			: never;
+	}[keyof _VanillaModHooks];
+
+	type _CustomModHooks<Context extends BaseModContext = BaseModContext> = {
+		init: (this: WithKilnMethods<Partial<Context>>, game: Game) => void;
+	};
+
+	type CustomHook = {
+		[K in keyof _CustomModHooks]: K extends keyof _CustomModHooks
+			? K
+			: never;
+	}[keyof _CustomModHooks];
+
+	type CustomHandler<Context extends BaseModContext> = {
+		[K in keyof _CustomModHooks]: K extends keyof _CustomModHooks
+			? _CustomModHooks[K]
+			: never;
+	}[keyof _CustomModHooks];
+
+	type InitHook = "init";
+	type InitHandler<Context extends BaseModContext> =
+		_CustomModHooks[InitHook];
+
 	type HandlerFor<
-		K extends Hook,
+		H extends CustomHook | VanillaHook,
 		Context extends BaseModContext = BaseModContext,
-	> = _HooksLookup<Context>[K];
+	> = H extends keyof _CustomModHooks<Context>
+		? _CustomModHooks<Context>[H]
+		: H extends keyof _VanillaModHooks<Context>
+		? _VanillaModHooks<Context>[H]
+		: never;
+	type VanillaHandlerFor<
+		H extends VanillaHook,
+		Context extends BaseModContext = BaseModContext,
+	> = HandlerFor<H, Context> extends VanillaHandler<Context>
+		? HandlerFor<H, Context>
+		: never;
+
+	type BoundHandler<Handler extends VanillaHandler<any>> = Handler extends (
+		this: any,
+		...args: infer Args
+	) => infer R
+		? (...args: Args) => R
+		: never;
+
+	type BoundHandlerFor<
+		Hook extends VanillaHook,
+		Context extends BaseModContext,
+	> = Hook extends VanillaHook
+		? BoundHandler<VanillaHandlerFor<Hook, Context>>
+		: never;
+
+	type HookFunction<Context extends BaseModContext> = <
+		Hook extends CustomHook | VanillaHook = CustomHook | VanillaHook,
+	>(
+		hook: Hook,
+		handler: HandlerFor<Hook, Context>,
+	) => SetupContext<Context>;
 
 	interface SetupContext<Context extends BaseModContext = BaseModContext> {
 		hook: HookFunction<Context>;
@@ -59,13 +119,11 @@ declare namespace CookieKiln {
 	}
 
 	type RuntimeHooks<Context extends BaseModContext = BaseModContext> = {
-		[K in Hook]?: BoundHandler[];
+		[K in VanillaHook]?: BoundHandler<VanillaHandlerFor<K, Context>>[];
 	};
 
 	type SetupHooks<Context extends BaseModContext = BaseModContext> = {
-		[K in Hook | InitHook]?: K extends InitHook
-			? InitHandler<Context>[]
-			: VoidHandler<Context>[];
+		[K in CustomHook | VanillaHook]?: HandlerFor<K, Context>[];
 	};
 }
 
