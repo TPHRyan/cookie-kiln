@@ -1,12 +1,6 @@
 import InitHandler = CookieKiln.InitHandler;
 
 import {
-	addPredefinedStyles,
-	addStyles,
-	getGameElement,
-	initOverlay,
-} from "./dom";
-import {
 	addHook,
 	addHookIfVanilla,
 	ALLOWED_HOOKS,
@@ -17,6 +11,13 @@ import {
 	registerTickerHook,
 	VanillaHook,
 } from "./hooks";
+import {
+	addPredefinedStyles,
+	addStyles,
+	createDomObserver,
+	initOverlay,
+} from "./dom";
+import { createModMenu } from "./dom/menu";
 
 function createModContext<Context extends BaseModContext>(
 	Game: Game,
@@ -101,9 +102,12 @@ function registerKilnMod<Context extends BaseModContext = BaseModContext>(
 }
 
 export function installKiln(Game: Game): void {
+	const domObserver = createDomObserver();
+
 	Game.kilnData = {
 		elements: {},
 		hooks: {},
+		modMenu: createModMenu(domObserver),
 	};
 	Game.registerKilnMod = registerKilnMod;
 
@@ -121,5 +125,5 @@ export function installKiln(Game: Game): void {
 	registerTickerHook(Game);
 
 	addPredefinedStyles();
-	Game.kilnData.elements.overlay = initOverlay(getGameElement());
+	Game.kilnData.elements.overlay = initOverlay();
 }

@@ -1,5 +1,10 @@
-import { createElement, createTextNode, getDocument } from "../kiln-helpers";
-import styles from "./style.css";
+import styles from "../style.css";
+import {
+	createElement,
+	createTextNode,
+	getDocument,
+	getGameElement,
+} from "../../kiln-helpers";
 
 export function addPredefinedStyles(): void {
 	addStyles(styles);
@@ -16,16 +21,9 @@ export function addStyles(css: string): void {
 
 const OVERLAY_ID = "kiln-overlay";
 
-export function getGameElement(): HTMLDivElement {
-	const gameElement = document.querySelector<HTMLDivElement>("#game");
-	if (null !== gameElement) {
-		return gameElement;
-	}
-	throw new Error('No element found with id "game"!');
-}
-
-export function initOverlay(gameElement: HTMLDivElement): HTMLDivElement {
+export function initOverlay(): HTMLDivElement {
 	console.debug("Initializing overlay element.");
+	const gameElement = getGameElement();
 	let overlayElement = gameElement.querySelector<HTMLDivElement>(OVERLAY_ID);
 	if (overlayElement === null) {
 		overlayElement = createElement("div");

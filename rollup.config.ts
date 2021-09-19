@@ -15,7 +15,17 @@ export default {
 		preferConst: true,
 	},
 	plugins: [
-		cssPlugin(),
+		cssPlugin({
+			minify: true,
+		}),
+		{
+			generateBundle: (options, bundle) =>
+				Object.keys(bundle)
+					.filter((key) => ".css" === key.substr(-4))
+					.forEach((cssKey) => {
+						delete bundle[cssKey];
+					}),
+		},
 		jsonPlugin({
 			preferConst: true,
 		}),

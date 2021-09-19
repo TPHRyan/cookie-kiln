@@ -8,6 +8,14 @@ export function getDocument(): Document {
 	return doc;
 }
 
+export function getGameElement(): HTMLDivElement {
+	const gameElement = document.querySelector<HTMLDivElement>("#game");
+	if (null !== gameElement) {
+		return gameElement;
+	}
+	throw new Error('No element found with id "game"!');
+}
+
 export function createElement<K extends keyof HTMLElementTagNameMap>(
 	tagName: K,
 	options?: ElementCreationOptions,
