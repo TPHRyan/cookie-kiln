@@ -11,6 +11,8 @@ declare namespace CookieKiln {
 	interface BaseModContext extends Record<string, unknown> {}
 	type WithKilnMethods<Context extends BaseModContext> = KilnMethods &
 		Context;
+	type ModContext = WithKilnMethods<BaseModContext>;
+	type Mods = Record<string, ModContext>;
 
 	type VoidHandler<Context extends BaseModContext> = (
 		this: WithKilnMethods<Context>,
@@ -125,22 +127,6 @@ declare namespace CookieKiln {
 	type SetupHooks<Context extends BaseModContext = BaseModContext> = {
 		[K in CustomHook | VanillaHook]?: HandlerFor<K, Context>[];
 	};
-
-	interface _TextEntry {
-		type: "text";
-		value: string;
-	}
-
-	interface _ModListEntry {
-		type: "modList";
-	}
-
-	type MenuEntry = _TextEntry | _ModListEntry;
-
-	interface ModMenu {
-		title: string;
-		entries: MenuEntry[];
-	}
 }
 
 interface Game {
@@ -148,7 +134,7 @@ interface Game {
 		[key: string]: unknown;
 		elements: Record<string, HTMLElement>;
 		hooks: CookieKiln.RuntimeHooks;
-		modMenu: CookieKiln.ModMenu;
+		mods: CookieKiln.Mods;
 	};
 
 	registerKilnMod<

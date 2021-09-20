@@ -2,7 +2,8 @@
   "name": "cookie-kiln",
   "version": "0.1.0",
   "scripts": {
-    "build": "rollup --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript"
+    "build": "rollup --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
+	"watch": "rollup --watch --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

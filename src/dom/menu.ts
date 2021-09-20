@@ -1,10 +1,7 @@
 import { DomObserver } from "./observer";
 import { createElement } from "../../kiln-helpers";
 
-function renderModMenu(
-	modMenu: CookieKiln.ModMenu,
-	subsection: HTMLDivElement,
-): void {
+function insertMenuTitleElement(subsection: HTMLDivElement): HTMLDivElement {
 	let settingsTitle: HTMLDivElement | null = null;
 	let insertAfter: Element | null = null;
 	let lastElement: HTMLDivElement | null = null;
@@ -27,45 +24,63 @@ function renderModMenu(
 	insertAfter = insertAfter ?? lastElement;
 	const menuTitleElement = createElement("div");
 	menuTitleElement.classList.add("title");
-	menuTitleElement.innerText = modMenu.title;
+	menuTitleElement.innerText = "Mods";
 	if (insertAfter) {
 		insertAfter.after(menuTitleElement);
 	} else {
 		subsection.appendChild(menuTitleElement);
 	}
-	let lastMenuElement: HTMLElement = menuTitleElement;
-	modMenu.entries.forEach((entry) => {
-		const itemElement = createElement("div");
-		itemElement.classList.add("listing");
-		switch (entry.type) {
-			case "modList":
-				const modLabelElement = createElement("label");
-				modLabelElement.innerText = "<MODS>";
-				itemElement.appendChild(modLabelElement);
-				break;
-			case "text":
-				const textFrame = createElement("div");
-				textFrame.classList.add("framed");
-				textFrame.style.width = "fit-content";
-				textFrame.innerText = entry.value;
-				itemElement.appendChild(textFrame);
-				break;
-			default:
-				return;
-		}
-		lastMenuElement.after(itemElement);
-		lastMenuElement = itemElement;
-	});
+	return menuTitleElement;
 }
 
-export function createModMenu(domObserver: DomObserver): CookieKiln.ModMenu {
-	const modMenu: CookieKiln.ModMenu = {
-		title: "Mods",
-		entries: [
-			{ type: "modList" },
-			{ type: "text", value: "Hello, world!" },
-		],
-	};
+function renderModListItem(
+	name: string,
+	_context?: CookieKiln.ModContext,
+): HTMLLIElement {
+	const itemElement = createElement("li");
+
+	const modNameElement = createElement("span");
+	modNameElement.innerText = name;
+
+	const optionsButtonElement = createElement("a");
+	optionsButtonElement.classList.add("option");
+	optionsButtonElement.innerText = "Options";
+
+	const removeButtonElement = createElement("a");
+	removeButtonElement.classList.add("option");
+	removeButtonElement.classList.add("warning");
+	removeButtonElement.classList.add("close");
+	removeButtonElement.innerText = "x";
+
+	itemElement.appendChild(modNameElement);
+	itemElement.appendChild(optionsButtonElement);
+	itemElement.appendChild(removeButtonElement);
+	return itemElement;
+}
+
+function renderModList(_mods: CookieKiln.Mods): HTMLDivElement {
+	const modListContainer = createElement("div");
+	modListContainer.classList.add("listing");
+	const modListElement = createElement("ul");
+	modListElement.classList.add("kiln-mod-list");
+	modListContainer.appendChild(modListElement);
+	modListElement.appendChild(renderModListItem("Test Mod 1"));
+	modListElement.appendChild(renderModListItem("Test Mod 2"));
+	modListElement.appendChild(renderModListItem("Test Mod 3"));
+	return modListContainer;
+}
+
+function renderModMenu(
+	subsection: HTMLDivElement,
+	mods: CookieKiln.Mods,
+): void {
+	insertMenuTitleElement(subsection).after(renderModList(mods));
+}
+
+export function createModMenu(
+	domObserver: DomObserver,
+	mods: CookieKiln.Mods,
+): void {
 	domObserver.registerHook("#menu", (element, mutations) => {
 		mutations
 			.filter((mutation) => "childList" === mutation.type)
@@ -95,7 +110,7 @@ export function createModMenu(domObserver: DomObserver): CookieKiln.ModMenu {
 						const subsectionName =
 							subsection.firstChild?.firstChild?.textContent?.toLowerCase();
 						if ("general" === subsectionName) {
-							renderModMenu(modMenu, subsection);
+							renderModMenu(subsection, mods);
 							break;
 						}
 					}
@@ -103,5 +118,4 @@ export function createModMenu(domObserver: DomObserver): CookieKiln.ModMenu {
 			});
 		return element;
 	});
-	return modMenu;
 }

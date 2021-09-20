@@ -99,15 +99,14 @@ function registerKilnMod<Context extends BaseModContext = BaseModContext>(
 			);
 		}
 	});
+	this.kilnData.mods[name] = modContext;
 }
 
 export function installKiln(Game: Game): void {
-	const domObserver = createDomObserver();
-
 	Game.kilnData = {
 		elements: {},
 		hooks: {},
-		modMenu: createModMenu(domObserver),
+		mods: {},
 	};
 	Game.registerKilnMod = registerKilnMod;
 
@@ -126,4 +125,7 @@ export function installKiln(Game: Game): void {
 
 	addPredefinedStyles();
 	Game.kilnData.elements.overlay = initOverlay();
+
+	const domObserver = createDomObserver();
+	createModMenu(domObserver, Game.kilnData.mods);
 }
