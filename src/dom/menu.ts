@@ -33,10 +33,7 @@ function insertMenuTitleElement(subsection: HTMLDivElement): HTMLDivElement {
 	return menuTitleElement;
 }
 
-function renderModListItem(
-	name: string,
-	_context?: CookieKiln.ModContext,
-): HTMLLIElement {
+function renderModListItem(name: string): HTMLLIElement {
 	const itemElement = createElement("li");
 
 	const modNameElement = createElement("span");
@@ -58,15 +55,15 @@ function renderModListItem(
 	return itemElement;
 }
 
-function renderModList(_mods: CookieKiln.Mods): HTMLDivElement {
+function renderModList(mods: CookieKiln.Mods): HTMLDivElement {
 	const modListContainer = createElement("div");
 	modListContainer.classList.add("listing");
 	const modListElement = createElement("ul");
 	modListElement.classList.add("kiln-mod-list");
+	Object.keys(mods).forEach((name) =>
+		modListElement.appendChild(renderModListItem(name)),
+	);
 	modListContainer.appendChild(modListElement);
-	modListElement.appendChild(renderModListItem("Test Mod 1"));
-	modListElement.appendChild(renderModListItem("Test Mod 2"));
-	modListElement.appendChild(renderModListItem("Test Mod 3"));
 	return modListContainer;
 }
 
