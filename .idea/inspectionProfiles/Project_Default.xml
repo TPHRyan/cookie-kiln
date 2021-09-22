@@ -10,9 +10,34 @@
         <option value="Typings" />
       </list>
     </option>
+    <inspection_tool class="CssMissingComma" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Cookie Clicker" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="CssNoGenericFontName" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Cookie Clicker" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="CssNonIntegerLengthInPixels" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="Cookie Clicker" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="CssOverwrittenProperties" enabled="true" level="WARNING" enabled_by_default="true">
+      <scope name="Cookie Clicker" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="CssReplaceWithShorthandSafely" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <scope name="Cookie Clicker" level="INFORMATION" enabled="true" />
+    </inspection_tool>
     <inspection_tool class="CssUnusedSymbol" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JSUnusedGlobalSymbols" enabled="true" level="WARNING" enabled_by_default="true">
       <scope name="Typings" level="INFORMATION" enabled="true" />
+    </inspection_tool>
+    <inspection_tool class="SpellCheckingInspection" enabled="true" level="TYPO" enabled_by_default="true">
+      <scope name="Cookie Clicker" level="INFORMATION" enabled="true">
+        <option name="processCode" value="true" />
+        <option name="processLiterals" value="true" />
+        <option name="processComments" value="true" />
+      </scope>
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
     </inspection_tool>
   </profile>
 </component>

@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-json", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:4.1.0"],
             ["@rollup/plugin-typescript", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:8.2.5"],
             ["@types/node", "npm:14.17.12"],
+            ["axios", "npm:0.21.4"],
             ["cypress", "npm:8.4.1"],
             ["prettier", "npm:2.3.2"],
             ["rollup", "npm:2.56.3"],
@@ -48,7 +49,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup-plugin-userscript-metablock", "npm:0.3.1"],
             ["ts-node", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:10.2.1"],
             ["tslib", "npm:2.3.1"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["vite", "npm:2.5.10"]
           ],
           "linkType": "SOFT",
         }]
@@ -2647,6 +2649,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["axios", [
+        ["npm:0.21.4", {
+          "packageLocation": "./.yarn/cache/axios-npm-0.21.4-e278873748-44245f24ac.zip/node_modules/axios/",
+          "packageDependencies": [
+            ["axios", "npm:0.21.4"],
+            ["follow-redirects", "virtual:e278873748b4e9d158db595d2f6cb0351c74052f52b53924aec4d9299e7b6babfb62aead374cf2f6e453bc8bea3b052380dc6b1137a162bbfc102bbb1c8cac42#npm:1.14.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["babel-plugin-dynamic-import-node", [
         ["npm:2.3.3", {
           "packageLocation": "./.yarn/cache/babel-plugin-dynamic-import-node-npm-2.3.3-be081936a9-c9d24415bc.zip/node_modules/babel-plugin-dynamic-import-node/",
@@ -3089,6 +3101,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-json", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:4.1.0"],
             ["@rollup/plugin-typescript", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:8.2.5"],
             ["@types/node", "npm:14.17.12"],
+            ["axios", "npm:0.21.4"],
             ["cypress", "npm:8.4.1"],
             ["prettier", "npm:2.3.2"],
             ["rollup", "npm:2.56.3"],
@@ -3096,7 +3109,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup-plugin-userscript-metablock", "npm:0.3.1"],
             ["ts-node", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:10.2.1"],
             ["tslib", "npm:2.3.1"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["vite", "npm:2.5.10"]
           ],
           "linkType": "SOFT",
         }]
@@ -3386,6 +3400,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["esbuild", [
+        ["npm:0.12.28", {
+          "packageLocation": "./.yarn/unplugged/esbuild-npm-0.12.28-2103ea1a52/node_modules/esbuild/",
+          "packageDependencies": [
+            ["esbuild", "npm:0.12.28"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["escalade", [
         ["npm:3.1.1", {
           "packageLocation": "./.yarn/cache/escalade-npm-3.1.1-e02da076aa-a3e2a99f07.zip/node_modules/escalade/",
@@ -3538,6 +3561,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["figures", "npm:3.2.0"],
             ["escape-string-regexp", "npm:1.0.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["follow-redirects", [
+        ["npm:1.14.4", {
+          "packageLocation": "./.yarn/cache/follow-redirects-npm-1.14.4-19eb02e590-d4ce74cf5c.zip/node_modules/follow-redirects/",
+          "packageDependencies": [
+            ["follow-redirects", "npm:1.14.4"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e278873748b4e9d158db595d2f6cb0351c74052f52b53924aec4d9299e7b6babfb62aead374cf2f6e453bc8bea3b052380dc6b1137a162bbfc102bbb1c8cac42#npm:1.14.4", {
+          "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-60ab585f0d/0/cache/follow-redirects-npm-1.14.4-19eb02e590-d4ce74cf5c.zip/node_modules/follow-redirects/",
+          "packageDependencies": [
+            ["follow-redirects", "virtual:e278873748b4e9d158db595d2f6cb0351c74052f52b53924aec4d9299e7b6babfb62aead374cf2f6e453bc8bea3b052380dc6b1137a162bbfc102bbb1c8cac42#npm:1.14.4"],
+            ["debug", null]
+          ],
+          "packagePeers": [
+            "debug"
           ],
           "linkType": "HARD",
         }]
@@ -4456,6 +4499,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["nanoid", [
+        ["npm:3.1.25", {
+          "packageLocation": "./.yarn/cache/nanoid-npm-3.1.25-c8f62ce160-e2353828c7.zip/node_modules/nanoid/",
+          "packageDependencies": [
+            ["nanoid", "npm:3.1.25"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["node-gyp", [
         ["npm:8.2.0", {
           "packageLocation": "./.yarn/unplugged/node-gyp-npm-8.2.0-c783adf325/node_modules/node-gyp/",
@@ -4655,6 +4707,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/pify-npm-2.3.0-8b63310934-9503aaeaf4.zip/node_modules/pify/",
           "packageDependencies": [
             ["pify", "npm:2.3.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["postcss", [
+        ["npm:8.3.6", {
+          "packageLocation": "./.yarn/cache/postcss-npm-8.3.6-e6c5350483-ff55b91bea.zip/node_modules/postcss/",
+          "packageDependencies": [
+            ["postcss", "npm:8.3.6"],
+            ["colorette", "npm:1.4.0"],
+            ["nanoid", "npm:3.1.25"],
+            ["source-map-js", "npm:0.6.2"]
           ],
           "linkType": "HARD",
         }]
@@ -5133,6 +5197,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["source-map-js", [
+        ["npm:0.6.2", {
+          "packageLocation": "./.yarn/cache/source-map-js-npm-0.6.2-af388ea7f1-9c8151a29e.zip/node_modules/source-map-js/",
+          "packageDependencies": [
+            ["source-map-js", "npm:0.6.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["sourcemap-codec", [
         ["npm:1.4.8", {
           "packageLocation": "./.yarn/cache/sourcemap-codec-npm-1.4.8-3a1a9e60b1-b57981c056.zip/node_modules/sourcemap-codec/",
@@ -5564,6 +5637,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["assert-plus", "npm:1.0.0"],
             ["core-util-is", "npm:1.0.2"],
             ["extsprintf", "npm:1.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["vite", [
+        ["npm:2.5.10", {
+          "packageLocation": "./.yarn/cache/vite-npm-2.5.10-7d657c29a2-08b7cb50bd.zip/node_modules/vite/",
+          "packageDependencies": [
+            ["vite", "npm:2.5.10"],
+            ["esbuild", "npm:0.12.28"],
+            ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=1cc4b2"],
+            ["postcss", "npm:8.3.6"],
+            ["resolve", "patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff"],
+            ["rollup", "npm:2.56.3"]
           ],
           "linkType": "HARD",
         }]
