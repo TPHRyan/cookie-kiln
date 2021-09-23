@@ -1410,6 +1410,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/tough-cookie@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@types/tough-cookie@npm:4.0.1"
+  checksum: 7570c1c2d74201f4ead3512cf8e4c99e97d92ab8a02ae2fb987fd720ced0ca1a2baf250c98a861a170b86762606c9bf6d32207675f13dffc5ab75c08c96578d2
+  languageName: node
+  linkType: hard
+
 "@types/yauzl@npm:^2.9.1":
   version: 2.9.2
   resolution: "@types/yauzl@npm:2.9.2"
@@ -1632,6 +1639,18 @@ __metadata:
   version: 1.11.0
   resolution: "aws4@npm:1.11.0"
   checksum: 5a00d045fd0385926d20ebebcfba5ec79d4482fe706f63c27b324d489a04c68edb0db99ed991e19eda09cb8c97dc2452059a34d97545cebf591d7a2b5a10999f
+  languageName: node
+  linkType: hard
+
+"axios-cookiejar-support@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "axios-cookiejar-support@npm:2.0.0"
+  dependencies:
+    http-cookie-agent: ^1.0.0
+  peerDependencies:
+    axios: ^0.20.0
+    tough-cookie: ^4.0.0
+  checksum: a57ff0670704b8c81813221a857975556b9d0935670cf7233b59383af26937dd856f32d0714d4271c3e0459ed039ed1a60d28ab0568d910cd8f38e7db131f6a6
   languageName: node
   linkType: hard
 
@@ -2005,18 +2024,28 @@ __metadata:
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-typescript": ^8.2.5
     "@types/node": ^14.17.12
+    "@types/tough-cookie": ^4.0.1
     axios: ^0.21.4
+    axios-cookiejar-support: ^2.0.0
     cypress: ^8.4.1
     prettier: ^2.3.2
     rollup: ^2.56.3
     rollup-plugin-import-css: ^3.0.0
     rollup-plugin-userscript-metablock: ^0.3.1
+    tough-cookie: ^4.0.0
     ts-node: ^10.2.1
     tslib: ^2.3.1
     typescript: ^4.3.5
     vite: ^2.5.10
   languageName: unknown
   linkType: soft
+
+"cookie@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "cookie@npm:0.4.1"
+  checksum: bd7c47f5d94ab70ccdfe8210cde7d725880d2fcda06d8e375afbdd82de0c8d3b73541996e9ce57d35f67f672c4ee6d60208adec06b3c5fc94cebb85196084cf8
+  languageName: node
+  linkType: hard
 
 "core-js-compat@npm:^3.14.0, core-js-compat@npm:^3.16.0":
   version: 3.16.4
@@ -2627,6 +2656,18 @@ fsevents@~2.3.2:
   version: 4.1.0
   resolution: "http-cache-semantics@npm:4.1.0"
   checksum: 974de94a81c5474be07f269f9fd8383e92ebb5a448208223bfb39e172a9dbc26feff250192ecc23b9593b3f92098e010406b0f24bd4d588d631f80214648ed42
+  languageName: node
+  linkType: hard
+
+"http-cookie-agent@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "http-cookie-agent@npm:1.0.0"
+  dependencies:
+    agent-base: ^6.0.2
+    cookie: ^0.4.1
+  peerDependencies:
+    tough-cookie: ^4.0.0
+  checksum: c189f0dee6eedf4c602d3341474cff706d1958b1c3bb91e4c14e08e8612e8dd18c44bb07556dd04d3bf6f90cc3c13884d7016c0b26cd6e47276a5ab644b2678b
   languageName: node
   linkType: hard
 
@@ -3437,7 +3478,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"psl@npm:^1.1.28":
+"psl@npm:^1.1.28, psl@npm:^1.1.33":
   version: 1.8.0
   resolution: "psl@npm:1.8.0"
   checksum: 6150048ed2da3f919478bee8a82f3828303bc0fc730fb015a48f83c9977682c7b28c60ab01425a72d82a2891a1681627aa530a991d50c086b48a3be27744bde7
@@ -4007,6 +4048,17 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"tough-cookie@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "tough-cookie@npm:4.0.0"
+  dependencies:
+    psl: ^1.1.33
+    punycode: ^2.1.1
+    universalify: ^0.1.2
+  checksum: 0891b37eb7d17faa3479d47f0dce2e3007f2583094ad272f2670d120fbcc3df3b0b0a631ba96ecad49f9e2297d93ff8995ce0d3292d08dd7eabe162f5b224d69
+  languageName: node
+  linkType: hard
+
 "tough-cookie@npm:~2.5.0":
   version: 2.5.0
   resolution: "tough-cookie@npm:2.5.0"
@@ -4102,11 +4154,11 @@ typescript@^4.3.5:
 
 "typescript@patch:typescript@^4.3.5#~builtin<compat/typescript>":
   version: 4.3.5
-  resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"
+  resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: bc2c4fdf0f1557fdafe4ef74848c72ebd9c8c60829568248f869121aea2bb20e16649a252431d0acb185ec118143be22bed73d08f64379557810d82756afedde
+  checksum: 4e2edec3c9b7b9a22ad9cbf9371339d9e13bfe44731f0e2d6a5287f991c3b0e3e0ac0c0ebbf9bf6fc2051e30559c789bfc9cf572cd6b836a0222ae141fac1dba
   languageName: node
   linkType: hard
 
@@ -4156,6 +4208,13 @@ typescript@^4.3.5:
   dependencies:
     imurmurhash: ^0.1.4
   checksum: 5b6876a645da08d505dedb970d1571f6cebdf87044cb6b740c8dbb24f0d6e1dc8bdbf46825fd09f994d7cf50760e6f6e063cfa197d51c5902c00a861702eb75a
+  languageName: node
+  linkType: hard
+
+"universalify@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "universalify@npm:0.1.2"
+  checksum: 40cdc60f6e61070fe658ca36016a8f4ec216b29bf04a55dce14e3710cc84c7448538ef4dad3728d0bfe29975ccd7bfb5f414c45e7b78883567fb31b246f02dff
   languageName: node
   linkType: hard
 

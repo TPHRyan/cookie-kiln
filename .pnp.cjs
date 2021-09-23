@@ -41,15 +41,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-json", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:4.1.0"],
             ["@rollup/plugin-typescript", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:8.2.5"],
             ["@types/node", "npm:14.17.12"],
+            ["@types/tough-cookie", "npm:4.0.1"],
             ["axios", "npm:0.21.4"],
+            ["axios-cookiejar-support", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:2.0.0"],
             ["cypress", "npm:8.4.1"],
             ["prettier", "npm:2.3.2"],
             ["rollup", "npm:2.56.3"],
             ["rollup-plugin-import-css", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:3.0.0"],
             ["rollup-plugin-userscript-metablock", "npm:0.3.1"],
+            ["tough-cookie", "npm:4.0.0"],
             ["ts-node", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:10.2.1"],
             ["tslib", "npm:2.3.1"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b"],
             ["vite", "npm:2.5.10"]
           ],
           "linkType": "SOFT",
@@ -2244,7 +2247,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["resolve", "patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=00b1ff"],
             ["rollup", "npm:2.56.3"],
             ["tslib", "npm:2.3.1"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b"]
           ],
           "packagePeers": [
             "@types/rollup",
@@ -2382,6 +2385,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-sizzle-npm-2.3.3-9403924950-586a9fb1f6.zip/node_modules/@types/sizzle/",
           "packageDependencies": [
             ["@types/sizzle", "npm:2.3.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/tough-cookie", [
+        ["npm:4.0.1", {
+          "packageLocation": "./.yarn/cache/@types-tough-cookie-npm-4.0.1-3e523463ac-7570c1c2d7.zip/node_modules/@types/tough-cookie/",
+          "packageDependencies": [
+            ["@types/tough-cookie", "npm:4.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -2655,6 +2667,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["axios", "npm:0.21.4"],
             ["follow-redirects", "virtual:e278873748b4e9d158db595d2f6cb0351c74052f52b53924aec4d9299e7b6babfb62aead374cf2f6e453bc8bea3b052380dc6b1137a162bbfc102bbb1c8cac42#npm:1.14.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["axios-cookiejar-support", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/axios-cookiejar-support-npm-2.0.0-8827558aef-a57ff06707.zip/node_modules/axios-cookiejar-support/",
+          "packageDependencies": [
+            ["axios-cookiejar-support", "npm:2.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:2.0.0", {
+          "packageLocation": "./.yarn/__virtual__/axios-cookiejar-support-virtual-500c93260a/0/cache/axios-cookiejar-support-npm-2.0.0-8827558aef-a57ff06707.zip/node_modules/axios-cookiejar-support/",
+          "packageDependencies": [
+            ["axios-cookiejar-support", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:2.0.0"],
+            ["@types/axios", null],
+            ["@types/tough-cookie", "npm:4.0.1"],
+            ["axios", "npm:0.21.4"],
+            ["http-cookie-agent", "virtual:500c93260aa9cbfcae3757e14d9eb9fb97312ca55c8db6b2aa023086f76b7a3ada2485827824e3eb7b9182457fc2fc5fded29bddc224c999c204795901737998#npm:1.0.0"],
+            ["tough-cookie", "npm:4.0.0"]
+          ],
+          "packagePeers": [
+            "@types/axios",
+            "@types/tough-cookie",
+            "axios",
+            "tough-cookie"
           ],
           "linkType": "HARD",
         }]
@@ -3090,6 +3129,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["cookie", [
+        ["npm:0.4.1", {
+          "packageLocation": "./.yarn/cache/cookie-npm-0.4.1-cc5e2ebb42-bd7c47f5d9.zip/node_modules/cookie/",
+          "packageDependencies": [
+            ["cookie", "npm:0.4.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["cookie-kiln", [
         ["workspace:.", {
           "packageLocation": "./",
@@ -3101,15 +3149,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-json", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:4.1.0"],
             ["@rollup/plugin-typescript", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:8.2.5"],
             ["@types/node", "npm:14.17.12"],
+            ["@types/tough-cookie", "npm:4.0.1"],
             ["axios", "npm:0.21.4"],
+            ["axios-cookiejar-support", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:2.0.0"],
             ["cypress", "npm:8.4.1"],
             ["prettier", "npm:2.3.2"],
             ["rollup", "npm:2.56.3"],
             ["rollup-plugin-import-css", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:3.0.0"],
             ["rollup-plugin-userscript-metablock", "npm:0.3.1"],
+            ["tough-cookie", "npm:4.0.0"],
             ["ts-node", "virtual:a4ed31a02e5509c61a401bf37aabf519b0652b90b166add880747b8583d928ef01fc01398ce1b5176b4905567a04b55e80cef77a21debe94bda032a49708c3e8#npm:10.2.1"],
             ["tslib", "npm:2.3.1"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b"],
             ["vite", "npm:2.5.10"]
           ],
           "linkType": "SOFT",
@@ -3837,6 +3888,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/http-cache-semantics-npm-4.1.0-860520a31f-974de94a81.zip/node_modules/http-cache-semantics/",
           "packageDependencies": [
             ["http-cache-semantics", "npm:4.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["http-cookie-agent", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/http-cookie-agent-npm-1.0.0-7cc50ec85e-c189f0dee6.zip/node_modules/http-cookie-agent/",
+          "packageDependencies": [
+            ["http-cookie-agent", "npm:1.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:500c93260aa9cbfcae3757e14d9eb9fb97312ca55c8db6b2aa023086f76b7a3ada2485827824e3eb7b9182457fc2fc5fded29bddc224c999c204795901737998#npm:1.0.0", {
+          "packageLocation": "./.yarn/__virtual__/http-cookie-agent-virtual-69beedf9f8/0/cache/http-cookie-agent-npm-1.0.0-7cc50ec85e-c189f0dee6.zip/node_modules/http-cookie-agent/",
+          "packageDependencies": [
+            ["http-cookie-agent", "virtual:500c93260aa9cbfcae3757e14d9eb9fb97312ca55c8db6b2aa023086f76b7a3ada2485827824e3eb7b9182457fc2fc5fded29bddc224c999c204795901737998#npm:1.0.0"],
+            ["@types/tough-cookie", "npm:4.0.1"],
+            ["agent-base", "npm:6.0.2"],
+            ["cookie", "npm:0.4.1"],
+            ["tough-cookie", "npm:4.0.0"]
+          ],
+          "packagePeers": [
+            "@types/tough-cookie",
+            "tough-cookie"
           ],
           "linkType": "HARD",
         }]
@@ -5406,6 +5481,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["punycode", "npm:2.1.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/tough-cookie-npm-4.0.0-7c5f3086af-0891b37eb7.zip/node_modules/tough-cookie/",
+          "packageDependencies": [
+            ["tough-cookie", "npm:4.0.0"],
+            ["psl", "npm:1.8.0"],
+            ["punycode", "npm:2.1.1"],
+            ["universalify", "npm:0.1.2"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["ts-node", [
@@ -5437,7 +5522,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["create-require", "npm:1.1.1"],
             ["diff", "npm:4.0.2"],
             ["make-error", "npm:1.3.6"],
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"],
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b"],
             ["yn", "npm:3.1.1"]
           ],
           "packagePeers": [
@@ -5497,10 +5582,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["typescript", [
-        ["patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7", {
-          "packageLocation": "./.yarn/cache/typescript-patch-bb3b548ba1-bc2c4fdf0f.zip/node_modules/typescript/",
+        ["patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b", {
+          "packageLocation": "./.yarn/cache/typescript-patch-6e3648db44-4e2edec3c9.zip/node_modules/typescript/",
           "packageDependencies": [
-            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=d8b4e7"]
+            ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=32657b"]
           ],
           "linkType": "HARD",
         }]
@@ -5564,6 +5649,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["universalify", [
+        ["npm:0.1.2", {
+          "packageLocation": "./.yarn/cache/universalify-npm-0.1.2-9b22d31d2d-40cdc60f6e.zip/node_modules/universalify/",
+          "packageDependencies": [
+            ["universalify", "npm:0.1.2"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:2.0.0", {
           "packageLocation": "./.yarn/cache/universalify-npm-2.0.0-03b8b418a8-2406a4edf4.zip/node_modules/universalify/",
           "packageDependencies": [
@@ -11748,7 +11840,7 @@ class VirtualFS extends ProxiedFS {
     if (this.pathUtils.isAbsolute(p)) return VirtualFS.resolveVirtual(p);
     const resolvedRoot = VirtualFS.resolveVirtual(this.baseFs.resolve(PortablePath.dot));
     const resolvedP = VirtualFS.resolveVirtual(this.baseFs.resolve(p));
-    return ppath.relative(resolvedRoot, resolvedP);
+    return ppath.relative(resolvedRoot, resolvedP) || PortablePath.dot;
   }
 
   mapFromBase(p) {

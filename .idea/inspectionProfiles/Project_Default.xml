@@ -26,8 +26,8 @@
       <scope name="Cookie Clicker" level="INFORMATION" enabled="true" />
     </inspection_tool>
     <inspection_tool class="CssUnusedSymbol" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="JSUnusedGlobalSymbols" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Typings" level="INFORMATION" enabled="true" />
+    <inspection_tool class="JSUnusedGlobalSymbols" enabled="false" level="WARNING" enabled_by_default="false">
+      <scope name="Typings" level="INFORMATION" enabled="false" />
     </inspection_tool>
     <inspection_tool class="SpellCheckingInspection" enabled="true" level="TYPO" enabled_by_default="true">
       <scope name="Cookie Clicker" level="INFORMATION" enabled="true">
