@@ -1,12 +1,17 @@
 import axios from "axios";
 import { existsSync } from "fs";
-import { readFile, writeFile } from "fs/promises";
-import type { IncomingHttpHeaders, OutgoingHttpHeaders } from "http";
+import { mkdir, readFile, writeFile } from "fs/promises";
+import type {
+	IncomingHttpHeaders,
+	OutgoingHttpHeaders,
+	ServerResponse,
+} from "http";
 import path from "path";
 import { defineConfig, ViteDevServer } from "vite";
 
 const ASSETS_DIR = path.join(module.path, "public");
-const COOKIE_CLICKER_MAIN_SITE = "https://orteil.dashnet.org/cookieclicker";
+const COOKIE_CLICKER_UPSTREAM_HOST = "orteil.dashnet.org";
+const COOKIE_CLICKER_UPSTREAM_SITE = `https://${COOKIE_CLICKER_UPSTREAM_HOST}/cookieclicker`;
 const VERSIONS_FILE = path.join(module.path, "versions.json");
 
 const versionRE = /\?v=([0-9.]+).*$/s;
@@ -62,7 +67,30 @@ async function getStaticAsset(
 }
 
 function resolveUrl(assetPath: string): string {
-	return `${COOKIE_CLICKER_MAIN_SITE}${assetPath}`;
+	return `${COOKIE_CLICKER_UPSTREAM_SITE}${assetPath}`;
+}
+
+function getUpstreamHeaders(
+	originalHeaders: IncomingHttpHeaders,
+): IncomingHttpHeaders {
+	const newHeaders: IncomingHttpHeaders = {
+		host: COOKIE_CLICKER_UPSTREAM_HOST,
+		referer: COOKIE_CLICKER_UPSTREAM_SITE,
+	};
+	for (const key of [
+		"connection",
+		"accept",
+		"accept-encoding",
+		"accept-language",
+		"range",
+		"user-agent",
+	]) {
+		if (originalHeaders[key]) {
+			newHeaders[key] = originalHeaders[key];
+		}
+	}
+	console.log(newHeaders);
+	return newHeaders;
 }
 
 async function fetchLiveAsset(
@@ -72,7 +100,7 @@ async function fetchLiveAsset(
 	const url = resolveUrl(assetPath);
 	console.log(`Fetching asset from ${url}`);
 	const assetResponse = await axios.get(url, {
-		headers: requestHeaders,
+		headers: getUpstreamHeaders(requestHeaders),
 		responseType: "arraybuffer",
 	});
 	if (assetResponse.status < 200 || assetResponse.status >= 300) {
@@ -91,6 +119,7 @@ async function fetchLiveAsset(
 
 async function cacheAsset(destPath: string, data: Uint8Array): Promise<void> {
 	const cachedPath = path.join(ASSETS_DIR, destPath);
+	await mkdir(path.dirname(cachedPath), { recursive: true });
 	await writeFile(cachedPath, data);
 	console.log(`Cached an asset at ${cachedPath}.`);
 }
@@ -102,12 +131,29 @@ async function handleBinaryAsset(
 	const versions = await getVersions();
 	const [cleanPath, version] = extractVersion(assetPath);
 	if (versions[cleanPath] === version) {
-		return getStaticAsset(assetPath);
+		try {
+			return await getStaticAsset(cleanPath);
+		} catch (e) {
+			console.warn(
+				"Error opening static asset (see below), fetching from server.",
+			);
+			console.warn(e);
+		}
 	}
 	const [asset, headers] = await fetchLiveAsset(assetPath, requestHeaders);
 	await cacheAsset(cleanPath, asset);
 	await updateVersion(cleanPath, version);
 	return [asset, headers];
+}
+
+async function serveBinaryAsset(
+	url: string,
+	requestHeaders: IncomingHttpHeaders,
+	response: ServerResponse,
+): Promise<void> {
+	const [asset, headers] = await handleBinaryAsset(url, requestHeaders);
+	response.writeHead(200, headers);
+	response.end(asset);
 }
 
 export default defineConfig({
@@ -120,22 +166,22 @@ export default defineConfig({
 						if ("GET" !== req.method) {
 							return next();
 						}
-						if (req.url?.startsWith("/img/")) {
-							let asset: Uint8Array;
-							let headers: OutgoingHttpHeaders;
-							try {
-								[asset, headers] = await handleBinaryAsset(
+						try {
+							if (
+								req.url?.startsWith("/img/") ||
+								req.url?.startsWith("/snd/")
+							) {
+								await serveBinaryAsset(
 									req.url,
 									req.headers,
+									res,
 								);
-							} catch (e) {
-								return next();
+								return;
 							}
-							res.writeHead(200, headers);
-							res.end(asset);
-						} else {
-							return next();
+						} catch (e) {
+							console.error(e);
 						}
+						return next();
 					});
 				};
 			},

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+	"rootDir": ".",
+	"baseUrl": "./dev-server",
+	"sourceMap": true,
+	"inlineSourceMap": true,
+	"noEmit": true,
+	"esModuleInterop": true,
+	"strict": true
+  },
+  "include": ["dev-server/vite.config.ts"]
+}
