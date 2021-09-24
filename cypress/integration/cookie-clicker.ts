@@ -5,7 +5,7 @@ describe("Cookie Clicker", () => {
 
 	it("Can click cookies", () => {
 		cy.cookieClicker();
-		cy.get("#bigCookie").click();
+		cy.get("#bigCookie").should("be.visible").click();
 		cy.contains("1 cookie");
 	});
 });

@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "watch": "rollup --watch --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
-    "cypress": "cypress open",
+    "launch-test-client": "ts-node --project ./cypress/tsconfig.json launch-test-client.ts",
     "serve-cookies": "ts-node --project ./dev-server/tsconfig.json ./dev-server/run.ts"
   },
   "devDependencies": {

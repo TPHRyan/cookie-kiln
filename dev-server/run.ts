@@ -1,7 +1,6 @@
-import createServer from "./server";
+import { runServer } from "./server";
 
-const app = createServer();
-app.listen(8777);
-console.log("Server now running on port 8777.");
+console.log("Starting dev server...");
+runServer(8777);
 
 export default {};

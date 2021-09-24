@@ -1,3 +1,4 @@
+import { Server } from "http";
 import Koa from "koa";
 import send from "koa-send";
 
@@ -13,4 +14,12 @@ export function createServer(): Koa {
 	return app;
 }
 
-export default createServer;
+export function runServer(port: number, hostname?: string): Server {
+	const app = createServer();
+	const server = app.listen(port, hostname);
+	const displayHostname = hostname ?? "localhost";
+	console.log(`Server now running at http://${displayHostname}:${port}.`);
+	return server;
+}
+
+export default { create: createServer, run: runServer };
