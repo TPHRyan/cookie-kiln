@@ -1,15 +1,10 @@
 import { mkdir, readFile, writeFile } from "fs/promises";
 import { existsSync } from "fs";
-import {
-	IncomingHttpHeaders,
-	IncomingMessage,
-	OutgoingHttpHeaders,
-	ServerResponse,
-} from "http";
+import { IncomingHttpHeaders, OutgoingHttpHeaders } from "http";
 import path from "path";
 
-import { ASSETS_DIR, VERSIONS_FILE } from "./environment";
-import { fetchLiveResource } from "./live-server";
+import { ASSETS_DIR, VERSIONS_FILE } from "../environment";
+import { fetchLiveResource } from "./live-server.client";
 
 const versionRE = /\?v=([0-9.]+).*$/s;
 const extractVersion = (url: string): [string, string | null] => {
@@ -39,6 +34,10 @@ async function updateVersion(
 
 function guessMimeType(filePath: string): string {
 	switch (path.extname(filePath)) {
+		case "css":
+			return "text/css";
+		case "js":
+			return "application/javascript";
 		case "jpg":
 		case "jpeg":
 			return "image/jpeg";
@@ -54,7 +53,7 @@ function guessMimeType(filePath: string): string {
 
 async function getStaticAsset(
 	assetPath: string,
-): Promise<[Uint8Array, OutgoingHttpHeaders]> {
+): Promise<[Buffer, OutgoingHttpHeaders]> {
 	const fileData = await readFile(path.join(ASSETS_DIR, assetPath));
 	const headers: OutgoingHttpHeaders = {
 		"content-type": guessMimeType(assetPath),
@@ -73,7 +72,7 @@ async function cacheAsset(destPath: string, data: Uint8Array): Promise<void> {
 async function handleAsset(
 	assetPath: string,
 	requestHeaders: IncomingHttpHeaders,
-): Promise<[Uint8Array, OutgoingHttpHeaders]> {
+): Promise<[Buffer, OutgoingHttpHeaders]> {
 	const versions = await getVersions();
 	const [cleanPath, version] = extractVersion(assetPath);
 	if (versions[cleanPath] === version) {
@@ -92,45 +91,28 @@ async function handleAsset(
 	return [asset, headers];
 }
 
-async function serveBinaryAsset(
-	url: string,
-	requestHeaders: IncomingHttpHeaders,
-	response: ServerResponse,
-): Promise<void> {
-	const [asset, headers] = await handleAsset(url, requestHeaders);
-	response.writeHead(200, headers);
-	response.end(asset);
+export interface ServedAsset {
+	asset: Buffer | string;
+	encoding?: BufferEncoding;
+	headers?: Record<string, string>;
 }
 
-async function serveTextAsset(
+export async function serveBinaryAsset(
 	url: string,
 	requestHeaders: IncomingHttpHeaders,
-	response: ServerResponse,
-): Promise<void> {
+): Promise<ServedAsset> {
 	const [asset, headers] = await handleAsset(url, requestHeaders);
-	response.writeHead(200, headers);
-	response.end(asset, "utf-8");
+	return { asset, headers: headers as Record<string, string> };
 }
 
-const majorAssetRE = /\/[A-Za-z0-9-_]+\.(css|js)/g;
-export async function serveMissingAssetsMiddleware(
-	req: IncomingMessage,
-	res: ServerResponse,
-	next: () => void,
-) {
-	if ("GET" !== req.method) {
-		return next();
-	}
-	try {
-		if (req.url?.startsWith("/img/") || req.url?.startsWith("/snd/")) {
-			await serveBinaryAsset(req.url, req.headers, res);
-			return;
-		} else if (req.url?.match(majorAssetRE)) {
-			await serveTextAsset(req.url, req.headers, res);
-			return;
-		}
-	} catch (e) {
-		console.error(e);
-	}
-	return next();
+export async function serveTextAsset(
+	url: string,
+	requestHeaders: IncomingHttpHeaders,
+): Promise<ServedAsset> {
+	const [asset, headers] = await handleAsset(url, requestHeaders);
+	return {
+		asset,
+		encoding: "utf-8",
+		headers: headers as Record<string, string>,
+	};
 }

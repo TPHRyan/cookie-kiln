@@ -1,18 +1,19 @@
 {
   "compilerOptions": {
+	"module": "CommonJS",
+	"moduleResolution": "Node",
 	"rootDir": ".",
-	"baseUrl": "./dev-server",
+	"baseUrl": ".",
 	"inlineSourceMap": true,
 	"noEmit": true,
 	"esModuleInterop": true,
 	"strict": true,
 	"lib": [
-	  "dom",
 	  "esnext"
 	]
   },
   "include": [
-	"dev-server/environment.ts",
-	"dev-server/vite.config.ts"
+	"environment.ts",
+	"run.ts"
   ]
 }

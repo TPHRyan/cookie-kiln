@@ -1,12 +1,3 @@
-import { existsSync } from "fs";
-import { writeFile } from "fs/promises";
-import path from "path";
-
-import { ROOT_DIR } from "./environment";
-import { fetchLiveResource } from "./live-server";
-
-const INDEX_PATH = "index.html";
-
 // noinspection HtmlRequiredLangAttribute
 const replacements: [string | RegExp, string][] = [
 	["<html>", `<html lang="en">`],
@@ -36,26 +27,11 @@ const replacements: [string | RegExp, string][] = [
 	[/<link href="([A-Za-z][^:]+?)"/g, `<link href="/$1"`],
 	[/0px([;, ])/g, "0$1"],
 ];
-async function transformIndexHtml(html: string): Promise<string> {
+
+export async function transformIndexHtml(html: string): Promise<string> {
 	let transformedHtml = html;
 	for (const [from, to] of replacements) {
 		transformedHtml = transformedHtml.replace(from, to);
 	}
 	return transformedHtml;
-}
-
-export async function prepareIndexHtml(): Promise<void> {
-	const fullPath = path.join(ROOT_DIR, "index.html");
-	if (existsSync(fullPath)) {
-		return;
-	}
-	console.log("index.html not found, preparing...");
-
-	const [indexContent] = await fetchLiveResource(INDEX_PATH);
-	await writeFile(
-		fullPath,
-		await transformIndexHtml(indexContent.toString()),
-	);
-
-	console.log("Prepared index.html");
 }

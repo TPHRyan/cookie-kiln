@@ -6,7 +6,7 @@ import { CookieJar } from "tough-cookie";
 import {
 	COOKIE_CLICKER_UPSTREAM_HOST,
 	COOKIE_CLICKER_UPSTREAM_SITE,
-} from "./environment";
+} from "../environment";
 
 const cookieJar = new CookieJar();
 const httpClient = wrapper(axios.create({ jar: cookieJar }));
@@ -49,6 +49,7 @@ async function sendRequestToLiveServer(
 ): Promise<AxiosResponse> {
 	const response = await httpClient.get(url, {
 		headers: getUpstreamHeaders(headers),
+		responseType: "arraybuffer",
 	});
 	if (response.status < 200 || response.status >= 300) {
 		throw new Error(
@@ -61,7 +62,7 @@ async function sendRequestToLiveServer(
 export async function fetchLiveResource(
 	resourcePath: string,
 	requestHeaders: IncomingHttpHeaders = {},
-): Promise<[Uint8Array, OutgoingHttpHeaders]> {
+): Promise<[Buffer, OutgoingHttpHeaders]> {
 	const url = resolveUrl(resourcePath);
 	console.log(`Fetching resource from ${url}`);
 	const response = await sendRequestToLiveServer(url, requestHeaders);
@@ -69,7 +70,7 @@ export async function fetchLiveResource(
 	if (response.headers["content-type"]) {
 		responseHeaders["Content-Type"] = response.headers["content-type"];
 	}
-	const resource: Uint8Array = response.data;
+	const resource: Buffer = response.data;
 	responseHeaders["Content-Length"] = String(resource.length);
 	return [resource, responseHeaders];
 }
