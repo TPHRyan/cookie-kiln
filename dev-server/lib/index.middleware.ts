@@ -32,6 +32,7 @@ export async function indexHtmlMiddleware(
 	if (ctx.url === "/" || ctx.url === INDEX_PATH) {
 		const indexPath = path.join(ROOT_DIR, INDEX_PATH);
 		ctx.body = await prepareIndexHtml(indexPath);
+		ctx.state.filename = "index.html";
 	} else {
 		await next();
 	}
