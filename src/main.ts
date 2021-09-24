@@ -1,8 +1,6 @@
 import { engines as pkgEngines, version as pkgVersion } from "../package.json";
-import { loadMod } from "../kiln-helpers/mod";
 
 import { installKiln } from "./kiln";
-import testMod from "./test-mod";
 
 function cookieClickerVersionIsValid(
 	actualVersion: number,
@@ -40,14 +38,6 @@ function createMod(Game: Game): CookieClickerMod {
 	};
 }
 
-function loadTestMod(): void {
-	loadMod("KilnTestMod", testMod)
-		.then()
-		.catch((reason) => {
-			throw reason;
-		});
-}
-
 unsafeWindow.onCookieKilnLoad = new Promise<Game>((resolve, reject) => {
 	const loadCookieKiln = () => {
 		const Game = unsafeWindow.Game;
@@ -64,5 +54,3 @@ unsafeWindow.onCookieKilnLoad = new Promise<Game>((resolve, reject) => {
 	};
 	loadCookieKiln();
 });
-
-loadTestMod();
