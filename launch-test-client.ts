@@ -1,7 +1,7 @@
 import { Server } from "http";
 import net from "net";
 
-import { launchClient } from "./cypress/integration-tests";
+import { launchClient } from "./cypress/test-client";
 import { runServer } from "./dev-server/server";
 
 function isPortAvailable(port: number): Promise<boolean> {
