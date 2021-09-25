@@ -1,0 +1,16 @@
+{
+  "name": "cookie-kiln",
+  "version": "0.2.0",
+  "main": "src/index.ts",
+  "types": "types/index.d.ts",
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.3"
+  },
+  "optionalDependencies": {
+    "typescript": ">=3.9.10"
+  },
+  "engines": {
+    "cookie-clicker": "<=2.031"
+  }
+}

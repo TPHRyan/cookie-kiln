@@ -1,0 +1,52 @@
+.kiln-mod-list {
+	display: inline-block;
+	padding: 8px;
+	min-width: 200px;
+	margin-bottom: 2px;
+	margin-right: 2px;
+
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ece2b6 #875526 #733726 #dfbc9a;
+	border-radius: 2px;
+}
+
+.kiln-mod-list > li {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+}
+
+.kiln-mod-list > li:not(:last-child) {
+	margin-bottom: 0.75em;
+}
+
+.kiln-mod-list > li > span {
+	flex-grow: 1;
+	margin-left: 2px;
+	margin-right: 8px;
+}
+
+.kiln-mod-list > li > a {
+	flex-grow: 0;
+	margin: 0 2px;
+}
+
+.kiln-mod-list > li a.option {
+	color: #94cd50;
+	border-color: #94cd50 #1b7a2f #1b7a2f #94cd50;
+}
+
+.kiln-mod-list > li a.option.warning {
+	color: #c00;
+	border-color: #c00;
+}
+
+#kiln-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 999999999;
+	pointer-events: none;
+}

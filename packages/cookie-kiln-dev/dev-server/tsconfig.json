@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+	"composite": true,
+	"module": "CommonJS",
+	"moduleResolution": "Node",
+
+	"inlineSourceMap": true,
+
+	"strict": true,
+	"esModuleInterop": true,
+	"lib": [
+	  "esnext"
+	]
+  },
+  "include": [
+	"environment.ts",
+	"run.ts",
+	"server.ts",
+	"lib/**/*.ts"
+  ]
+}

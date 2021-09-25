@@ -1,0 +1,7 @@
+{
+  "name": "Cookie Kiln",
+  "namespace": "https://paroz.io/",
+  "include": "/https?://orteil.dashnet.org/cookieclicker/",
+  "run-at": "document-start",
+  "grant": ["unsafeWindow"]
+}

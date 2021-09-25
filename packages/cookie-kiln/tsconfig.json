@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+	"composite": true,
+	"module": "ESNext",
+	"moduleResolution": "Node",
+	"target": "ESNext",
+
+	"sourceMap": true,
+
+	"strict": true,
+	"esModuleInterop": true,
+
+	"typeRoots": [
+	  "./node_modules/@types",
+	  "./@types",
+	  "./types"
+	]
+  },
+  "include": [
+	"src/**.ts",
+	"types/index.d.ts"
+  ],
+  "exclude": [
+	"node_modules"
+  ]
+}

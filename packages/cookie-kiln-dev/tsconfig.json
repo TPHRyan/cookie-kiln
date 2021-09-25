@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+	"composite": true,
+	"module": "ESNext",
+	"moduleResolution": "Node",
+	"target": "ES2021",
+
+	"outDir": "dist",
+	"noEmit": true,
+	"sourceMap": false,
+
+	"strict": true,
+	"esModuleInterop": true,
+	"resolveJsonModule": true,
+
+	"typeRoots": ["./node_modules/@types", "./@types"],
+	"types": ["cookie-clicker-types", "cookie-kiln", "tampermonkey"]
+  },
+  "include": ["src/**/*.ts", "cypress/test-client.ts", "./launch-test-client.ts", "./rollup.config.ts", "./package.json"],
+  "exclude": [
+	"node_modules"
+  ],
+  "references": [{
+	"path": "../cookie-kiln/tsconfig.json"
+  }, {
+	"path": "./dev-server/tsconfig.json"
+  }]
+}
