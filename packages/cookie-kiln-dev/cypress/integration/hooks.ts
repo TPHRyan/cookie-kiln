@@ -1,6 +1,6 @@
 describe("Kiln Hooks", () => {
 	it("Can register a working 'check' hook", () => {
-		const updatedCookieCount = 123456;
+		const updatedCookieCount = 915781;
 		const formattedCookieCount = new Intl.NumberFormat().format(
 			updatedCookieCount,
 		);
@@ -24,13 +24,10 @@ describe("Kiln Hooks", () => {
 		});
 	});
 	it("Can register a working 'click' hook", () => {
-		const updatedCookieCount = 123456;
-		const formattedCookieCount = new Intl.NumberFormat().format(
-			updatedCookieCount,
-		);
+		const notifyMessage = "The cookie was clicked.";
 		const clickMod: CookieKiln.Mod = (ctx) =>
 			ctx.hook("click", (Game) => {
-				Game.cookies = updatedCookieCount;
+				Game.Notify("Clicked", notifyMessage);
 			});
 		const clickModName = "clickMod";
 
@@ -39,7 +36,27 @@ describe("Kiln Hooks", () => {
 			Game.registerKilnMod(clickModName, clickMod);
 			cy.wrap(Game).should("have.kilnMod", clickModName);
 			cy.get("#bigCookie").click();
-			cy.get("#cookies").contains(`${formattedCookieCount} cookies`);
+			cy.contains(notifyMessage);
+		});
+	});
+	it("Can register a working 'cookiesPerClick' hook", () => {
+		const cookiesPerClick = 934949;
+		const formattedCookiesPerClick = new Intl.NumberFormat().format(
+			cookiesPerClick,
+		);
+		const cpcMod: CookieKiln.Mod = (ctx) =>
+			ctx.hook("cookiesPerClick", () => {
+				console.log("<<<cookiesPerClick>>>");
+				return cookiesPerClick;
+			});
+		const cpcModName = "cookiesPerClickMod";
+
+		cy.cookieClicker();
+		cy.get("@Game").then((Game) => {
+			Game.registerKilnMod(cpcModName, cpcMod);
+			cy.wrap(Game).should("have.kilnMod", cpcModName);
+			cy.get("#bigCookie").click();
+			cy.get("#cookies").contains(`${formattedCookiesPerClick} cookies`);
 		});
 	});
 	it("Can register a working 'ticker' hook", () => {
