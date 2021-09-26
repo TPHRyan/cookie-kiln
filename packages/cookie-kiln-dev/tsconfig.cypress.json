@@ -10,7 +10,11 @@
 	  "dom"
 	],
 
-	"typeRoots": ["node_modules/@types", "./@types"]
+	"typeRoots": ["node_modules/@types", "./@types"],
+	"types": [
+	  "cookie-clicker-types",
+	  "cookie-kiln"
+	]
   },
   "include": [
 	"./launch-test-client.ts",
