@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+	"module": "CommonJS",
+	"moduleResolution": "Node",
+	"target": "ESNext",
+
+	"esModuleInterop": true,
+	"lib": [
+	  "ESNext",
+	  "dom"
+	],
+
+	"typeRoots": ["node_modules/@types", "./@types"]
+  },
+  "include": [
+	"./launch-test-client.ts",
+    "./cypress/test-client.ts",
+	"./cypress/**/*.ts"
+  ]
+}

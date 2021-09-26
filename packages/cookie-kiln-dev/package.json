@@ -3,9 +3,9 @@
   "name": "cookie-kiln-dev",
   "version": "0.2.0",
   "scripts": {
-    "build": "rollup --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build": "tsc -p ./dev-server/tsconfig.json && ts-node --project tsconfig.scripts.json build.ts",
     "watch": "rollup --watch --config ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
-    "launch-test-client": "ts-node --project ./cypress/tsconfig.json launch-test-client.ts",
+    "launch-test-client": "ts-node --project tsconfig.cypress.json launch-test-client.ts",
     "serve-cookies": "ts-node --project ./dev-server/tsconfig.json ./dev-server/run.ts"
   },
   "devDependencies": {
@@ -22,12 +22,14 @@
     "axios-cookiejar-support": "^2.0.0",
     "cookie-clicker-types": "^0.1.0",
     "cookie-kiln": "^0.2.0",
+    "core-js": "^3.18.0",
     "cypress": "^8.4.1",
     "koa": "^2.13.1",
     "koa-send": "^5.0.1",
     "prettier": "^2.3.2",
     "rollup": "^2.56.3",
     "rollup-plugin-import-css": "^3.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-userscript-metablock": "^0.3.1",
     "tough-cookie": "^4.0.0",
     "ts-node": "^10.2.1",

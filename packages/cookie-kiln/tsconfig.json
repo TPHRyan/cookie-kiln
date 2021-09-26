@@ -5,6 +5,8 @@
 	"moduleResolution": "Node",
 	"target": "ESNext",
 
+	"rootDir": "src",
+	"outDir": "dist",
 	"sourceMap": true,
 
 	"strict": true,

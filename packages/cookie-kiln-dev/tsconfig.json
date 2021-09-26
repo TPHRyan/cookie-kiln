@@ -5,24 +5,41 @@
 	"moduleResolution": "Node",
 	"target": "ES2021",
 
-	"outDir": "dist",
-	"noEmit": true,
+	"outDir": "build",
 	"sourceMap": false,
+	"declaration": true,
+	"declarationDir": ".",
 
 	"strict": true,
 	"esModuleInterop": true,
 	"resolveJsonModule": true,
 
-	"typeRoots": ["./node_modules/@types", "./@types"],
-	"types": ["cookie-clicker-types", "cookie-kiln", "tampermonkey"]
+	"typeRoots": [
+	  "./node_modules/@types",
+	  "./@types"
+	],
+	"types": [
+	  "cookie-clicker-types",
+	  "cookie-kiln",
+	  "node",
+	  "tampermonkey"
+	]
   },
-  "include": ["src/**/*.ts", "cypress/test-client.ts", "./launch-test-client.ts", "./rollup.config.ts", "./package.json"],
-  "exclude": [
-	"node_modules"
+  "include": [
+	"./package.json",
+	"src/**/*.ts",
+	"./rollup.config.ts"
   ],
-  "references": [{
-	"path": "../cookie-kiln/tsconfig.json"
-  }, {
-	"path": "./dev-server/tsconfig.json"
-  }]
+  "exclude": [
+	"node_modules",
+	"./dist"
+  ],
+  "references": [
+	{
+	  "path": "../cookie-kiln/tsconfig.json"
+	},
+	{
+	  "path": "./dev-server/tsconfig.json"
+	}
+  ]
 }

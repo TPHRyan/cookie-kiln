@@ -4,6 +4,7 @@ import typescriptPlugin from "@rollup/plugin-typescript";
 import { RollupOptions } from "rollup";
 import cssPlugin from "rollup-plugin-import-css";
 import metablockPlugin from "rollup-plugin-userscript-metablock";
+import nodeResolve from "rollup-plugin-node-resolve";
 
 import { version as pkgVersion } from "./package.json";
 
@@ -15,6 +16,7 @@ export default {
 		preferConst: true,
 	},
 	plugins: [
+		nodeResolve(),
 		cssPlugin({
 			minify: true,
 		}),
@@ -29,7 +31,11 @@ export default {
 		jsonPlugin({
 			preferConst: true,
 		}),
-		typescriptPlugin(),
+		typescriptPlugin({
+			tsconfig: "./tsconfig.json",
+			include: ["*.ts", "**/*.ts", "*.json", "**/*.json"],
+			outputToFilesystem: false,
+		}),
 		babel({
 			babelHelpers: "bundled",
 		}),

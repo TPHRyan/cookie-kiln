@@ -1,4 +1,5 @@
 /index.html
+/build
 /public/*
 !/public/favicon.ico
 /versions.json

@@ -4,13 +4,16 @@
 	"module": "CommonJS",
 	"moduleResolution": "Node",
 
+	"outDir": "build",
 	"inlineSourceMap": true,
 
 	"strict": true,
 	"esModuleInterop": true,
 	"lib": [
-	  "esnext"
-	]
+	  "esnext",
+	  "dom"
+	],
+	"types": ["node"]
   },
   "include": [
 	"environment.ts",

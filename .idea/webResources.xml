@@ -5,7 +5,7 @@
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>
-            <path value="file://$PROJECT_DIR$/dev-server/public" />
+            <path value="file://$PROJECT_DIR$/packages/cookie-kiln-dev/dev-server/public" />
           </resourceRoots>
         </entryData>
       </entry>

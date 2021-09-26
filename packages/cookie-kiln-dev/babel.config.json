@@ -3,6 +3,7 @@
 	[
 	  "@babel/env",
 	  {
+		"corejs": "3",
 		"useBuiltIns": "entry"
 	  }
 	]
