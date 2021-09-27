@@ -20,5 +20,6 @@
 	"run.ts",
 	"server.ts",
 	"lib/**/*.ts"
-  ]
+  ],
+  "exclude": ["./public"]
 }

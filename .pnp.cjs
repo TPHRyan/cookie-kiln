@@ -3390,17 +3390,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["cookie-clicker-types", [
-        ["npm:0.1.0", {
-          "packageLocation": "./.yarn/cache/cookie-clicker-types-npm-0.1.0-3096b198b3-153809d8d8.zip/node_modules/cookie-clicker-types/",
+        ["npm:0.2.0", {
+          "packageLocation": "./.yarn/cache/cookie-clicker-types-npm-0.2.0-38df907767-9f2166ace4.zip/node_modules/cookie-clicker-types/",
           "packageDependencies": [
-            ["cookie-clicker-types", "npm:0.1.0"]
+            ["cookie-clicker-types", "npm:0.2.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:0.1.0", {
-          "packageLocation": "./.yarn/__virtual__/cookie-clicker-types-virtual-c91398a8c3/0/cache/cookie-clicker-types-npm-0.1.0-3096b198b3-153809d8d8.zip/node_modules/cookie-clicker-types/",
+        ["virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:0.2.0", {
+          "packageLocation": "./.yarn/__virtual__/cookie-clicker-types-virtual-d46ad40c3d/0/cache/cookie-clicker-types-npm-0.2.0-38df907767-9f2166ace4.zip/node_modules/cookie-clicker-types/",
           "packageDependencies": [
-            ["cookie-clicker-types", "virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:0.1.0"],
+            ["cookie-clicker-types", "virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:0.2.0"],
             ["@types/typescript", null],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
@@ -3438,7 +3438,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/tough-cookie", "npm:4.0.1"],
             ["axios", "npm:0.21.4"],
             ["axios-cookiejar-support", "virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:2.0.2"],
-            ["cookie-clicker-types", "virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:0.1.0"],
+            ["cookie-clicker-types", "virtual:fafdd0c983f540609759af98650c24b3e0734a2d26b2e613bfaf1554fe39a526dd967b97fb53e809060267e26fdb1ec1735d011e7f8bbaab010e4f3fb47ddb42#npm:0.2.0"],
             ["cookie-kiln", "workspace:packages/cookie-kiln"],
             ["core-js", "npm:3.18.0"],
             ["cypress", "npm:8.4.1"],

@@ -2235,12 +2235,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie-clicker-types@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "cookie-clicker-types@npm:0.1.0"
+"cookie-clicker-types@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "cookie-clicker-types@npm:0.2.0"
   peerDependencies:
     typescript: ">=3.9.10"
-  checksum: 153809d8d81a7baa392afeb360d4569385e97e5a64a1cd291e1633c87441fde49dd5bcd4f3a2758c7bdfad2fd0140ecb8d49354349a3ffd959577b5db3cad98a
+  checksum: 9f2166ace4bb80349c4cae3bf7c90c61872f23b030c118d2833874c9ec67c93663806288e4a1070acdcf6034d709721892aa61d6ba7beb834ccded6ae502644c
   languageName: node
   linkType: hard
 
@@ -2259,7 +2259,7 @@ __metadata:
     "@types/tough-cookie": ^4.0.1
     axios: ^0.21.4
     axios-cookiejar-support: ^2.0.0
-    cookie-clicker-types: ^0.1.0
+    cookie-clicker-types: ^0.2.0
     cookie-kiln: ^0.2.0
     core-js: ^3.18.0
     cypress: ^8.4.1

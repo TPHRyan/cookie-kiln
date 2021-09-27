@@ -8,7 +8,7 @@
 	"outDir": "build",
 	"sourceMap": false,
 	"declaration": true,
-	"declarationDir": ".",
+	"declarationDir": "build",
 
 	"strict": true,
 	"esModuleInterop": true,
@@ -36,10 +36,10 @@
   ],
   "references": [
 	{
-	  "path": "../cookie-kiln/tsconfig.json"
+	  "path": "./dev-server/tsconfig.json"
 	},
 	{
-	  "path": "./dev-server/tsconfig.json"
+	  "path": "../cookie-kiln/tsconfig.json"
 	}
   ]
 }

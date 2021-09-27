@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
+	"composite": true,
 	"module": "CommonJS",
 	"moduleResolution": "Node",
 	"target": "ESNext",
-
+	"noEmit": true,
 	"esModuleInterop": true,
 	"lib": [
 	  "ESNext",
 	  "dom"
 	],
-
-	"typeRoots": ["node_modules/@types", "./@types"],
+	"typeRoots": [
+	  "node_modules/@types",
+	  "./@types"
+	],
 	"types": [
 	  "cookie-clicker-types",
 	  "cookie-kiln"
@@ -18,7 +21,15 @@
   },
   "include": [
 	"./launch-test-client.ts",
-    "./cypress/test-client.ts",
+	"./cypress/test-client.ts",
 	"./cypress/**/*.ts"
+  ],
+  "references": [
+	{
+	  "path": "./dev-server/tsconfig.json"
+	},
+	{
+	  "path": "../cookie-kiln/tsconfig.json"
+	}
   ]
 }
